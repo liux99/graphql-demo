@@ -1,0 +1,89 @@
+scalar JSONObject
+
+enum PropertyStatus {
+  AVAILABLE
+  LEASED
+  INACTIVE
+  COMING_SOON
+  PENDING
+}
+
+type Property {
+  id: ID!
+  ownerId: ID!
+  propertyName: String!
+  unparsedAddress: String
+  city: String!
+  state: String!
+  postalCode: String!
+  bedroomsTotal: Int
+  bathroomsTotal: Float
+  livingArea: Int
+  lotSizeAcres: Float
+  yearBuilt: Int
+  status: PropertyStatus!
+  features: JSONObject
+  amenities: [String!]
+  createdAt: String
+  updatedAt: String
+}
+
+type PageInfo {
+  hasNextPage: Boolean!
+  currentPage: Int!
+  totalPages: Int!
+}
+
+type PropertyPage {
+  content: [Property!]!
+  pageInfo: PageInfo!
+}
+
+input PropertyFilter {
+  city: String
+  state: String
+  status: PropertyStatus
+}
+
+input PropertyInput {
+  ownerId: ID!
+  propertyName: String!
+  city: String!
+  state: String!
+  postalCode: String!
+  bedroomsTotal: Int
+  bathroomsTotal: Float
+  livingArea: Int
+  lotSizeAcres: Float
+  yearBuilt: Int
+  status: PropertyStatus = AVAILABLE
+  amenities: [String!]
+  features: JSONObject
+}
+
+input PropertyPatchInput {
+  id: ID!
+  propertyName: String
+  city: String
+  state: String
+  postalCode: String
+  bedroomsTotal: Int
+  bathroomsTotal: Float
+  livingArea: Int
+  lotSizeAcres: Float
+  yearBuilt: Int
+  status: PropertyStatus
+  amenities: [String!]
+  features: JSONObject
+}
+
+type Query {
+  properties(page: Int = 0, size: Int = 20, filter: PropertyFilter): PropertyPage!
+  property(id: ID!): Property
+}
+
+type Mutation {
+  createProperty(input: PropertyInput!): Property!
+  updateProperty(input: PropertyPatchInput!): Property!
+  deleteProperty(id: ID!): Boolean!
+}
