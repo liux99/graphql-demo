@@ -19,7 +19,7 @@ spring:
       enabled: true
       path: /graphiql
     schema:
-      locations: classpath:graphql/
+      locations: classpath:graphql/schema.graphqls
 
 # H2 console (optional)
 spring.h2.console.enabled: true
