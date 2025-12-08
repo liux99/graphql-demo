@@ -1,24 +1,78 @@
-# Compiled class file
-*.class
+# ---------------------------------------------------
+# GLOBAL/SYSTEM FILES (Should apply to all projects)
+# ---------------------------------------------------
+.DS_Store
+.vscode/
+.idea/
+.project
+.classpath
+*.iml
+*.iws
+*.swp
+*~
 
-# Log file
-*.log
+# ---------------------------------------------------
+# MAVEN / SPRING BOOT BACKEND
+# ---------------------------------------------------
 
-# BlueJ files
-*.ctxt
+# Build & Compilation Artifacts
+*/target/
+!/target/classes/static  # Keep static resources if necessary, otherwise exclude /target
 
-# Mobile Tools for Java (J2ME)
-.mtj.tmp/
-
-# Package Files #
+# Package Files (Already in your list, but good to include)
 *.jar
 *.war
 *.nar
 *.ear
-*.zip
-*.tar.gz
-*.rar
 
-# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+# Logs and PID files
+*.log
+*.pid
+/logs/
+
+# Test and coverage reports
+*/surefire-reports/
+*/jacoco-output/
+*/cobertura.ser
+
+# Generated Sources (e.g., from GraphQL codegen)
+/generated-sources/
+
+# Class files
+*.class
+
+# JVM Crash Logs
 hs_err_pid*
 replay_pid*
+
+# Spring Specific Configuration Files
+# Configuration files that hold local passwords or keys
+# Add only if they are for local environment variables/secrets
+# application-local.properties
+# application-local.yml
+
+
+# ---------------------------------------------------
+# NODE / REACT FRONTEND
+# ---------------------------------------------------
+
+# Node modules directory (Essential for React)
+*/node_modules
+*/build  # Standard output directory for React build (create-react-app)
+*/dist   # Common output directory for Webpack/Vite
+
+# Package Lock Files
+# Use only the one corresponding to your package manager
+package-lock.json # NPM
+yarn.lock         # Yarn
+pnpm-lock.yaml    # pnpm
+
+# Environment Variables
+.env
+.env.development.local
+.env.test.local
+.env.production.local
+.env.local
+
+# Coverage/Test reports
+*/coverage

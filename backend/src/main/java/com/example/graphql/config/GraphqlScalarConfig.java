@@ -12,8 +12,7 @@ public class GraphqlScalarConfig {
 	@Bean
 	public RuntimeWiringConfigurer runtimeWiringConfigurer() {
 		return wiringBuilder -> wiringBuilder.scalar(ExtendedScalars.Json) // JSON scalar
-				.scalar(ExtendedScalars.Object); // JSONObject scalar
-		// .scalar(ExtendedScars.); // optional
+				.scalar(ExtendedScalars.UUID); 
 	}
 
 	@PostConstruct
