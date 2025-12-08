@@ -8,7 +8,7 @@ export const CREATE_PROPERTY = gql`
       city
       state
       postalCode
-      status
+      standardStatus
     }
   }
 `;
@@ -21,7 +21,7 @@ export const UPDATE_PROPERTY = gql`
       city
       state
       postalCode
-      status
+      standardStatus
     }
   }
 `;

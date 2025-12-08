@@ -6,6 +6,8 @@ import com.example.graphql.dto.PropertyResponse;
 import com.example.graphql.model.Property;
 import org.springframework.stereotype.Component;
 
+import java.util.Map;
+
 @Component
 public class PropertyMapper {
 
@@ -24,7 +26,7 @@ public class PropertyMapper {
                 .lotSizeAcres(input.getLotSizeAcres())
                 .yearBuilt(input.getYearBuilt())
                 .status(input.getStatus())
-                .features(input.getFeatures())
+                .features(input.getFeatures() != null ? input.getFeatures() : Map.of())
                 .amenities(input.getAmenities())
                 .build();
     }
@@ -60,8 +62,8 @@ public class PropertyMapper {
                 .livingArea(entity.getLivingArea())
                 .lotSizeAcres(entity.getLotSizeAcres())
                 .yearBuilt(entity.getYearBuilt())
-                .status(entity.getStatus())
-                .features(entity.getFeatures())
+                .standardStatus(entity.getStatus())
+                .features(entity.getFeatures() != null ? entity.getFeatures() : Map.of())
                 .amenities(entity.getAmenities())
                 .createdAt(entity.getCreatedAt())
                 .updatedAt(entity.getUpdatedAt())

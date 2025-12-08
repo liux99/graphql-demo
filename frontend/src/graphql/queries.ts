@@ -17,7 +17,7 @@ export const GET_PROPERTIES = gql`
         postalCode
         bedroomsTotal
         bathroomsTotal
-        status
+        standardStatus
       }
     }
   }
@@ -33,8 +33,8 @@ export const GET_PROPERTY = gql`
       postalCode
       bedroomsTotal
       bathroomsTotal
-      status
-      description
+      standardStatus
+      features
     }
   }
 `;

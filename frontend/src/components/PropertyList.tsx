@@ -10,7 +10,7 @@ type Property = {
   postalCode: string;
   bedroomsTotal?: number;
   bathroomsTotal?: number;
-  status: string;
+  standardStatus: string;
 };
 
 type PageInfo = {
@@ -33,12 +33,9 @@ type PropertiesVars = {
 };
 
 export const PropertyList: React.FC = () => {
-  const { data, loading, error } = useQuery<PropertiesData, PropertiesVars>(
-    GET_PROPERTIES,
-    {
-      variables: { page: 0, size: 20 }
-    }
-  );
+  const { data, loading, error } = useQuery<PropertiesData, PropertiesVars>(GET_PROPERTIES, {
+    variables: { page: 0, size: 20 }
+  });
 
   if (loading) return <p>Loading properties...</p>;
   if (error) return <p>Error: {error.message}</p>;
@@ -50,15 +47,15 @@ export const PropertyList: React.FC = () => {
       <h2>Properties</h2>
       {properties.length === 0 && <p>No properties yet.</p>}
       <ul>
-        {properties.map((p) => (
-          <li key={p.id}>
-            <strong>{p.propertyName}</strong> — {p.city}, {p.state}{" "}
-            ({p.status})
-          </li>
-        ))}
+          {properties.map((p) => (
+            <li key={p.id}>
+              <strong>{p.propertyName}</strong> — {p.city}, {p.state}{" "}
+              ({p.standardStatus})
+            </li>
+          ))}
       </ul>
       <div style={{ marginTop: 8 }}>
-        Page {data?.properties.pageInfo.currentPage ?? 0 + 1} of{" "}
+        Page {(data?.properties.pageInfo.currentPage ?? 0) + 1} of{" "}
         {data?.properties.pageInfo.totalPages ?? 1}
       </div>
     </div>

@@ -23,7 +23,7 @@ public class PropertyResponse {
     private Integer livingArea;
     private Float lotSizeAcres;
     private Integer yearBuilt;
-    private PropertyStatus status;
+    private PropertyStatus standardStatus;
     private Map<String, Object> features;
     private String[] amenities;
     private LocalDateTime createdAt;

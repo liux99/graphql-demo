@@ -24,8 +24,7 @@ public class PropertyController {
     public PropertyPageResponse properties(@Argument int page,
                                            @Argument int size,
                                            @Argument(name = "filter") PropertyFilterInput filter) {
-        PropertyStatus status = filter != null ? filter.status() : null;
-        return propertyService.getProperties(page, size, status);
+        return propertyService.getProperties(page, size, filter);
     }
 
     @QueryMapping
@@ -49,5 +48,5 @@ public class PropertyController {
     }
 
     // local record to map filter input
-    public record PropertyFilterInput(PropertyStatus status) {}
+    public record PropertyFilterInput(String city, String state, PropertyStatus status) {}
 }
