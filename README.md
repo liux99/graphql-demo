@@ -1,6 +1,6 @@
  
 
-# 🚀 GraphQL Property Demo (Spring Boot + React)
+# 🚀 GraphQL Best Practice Demo (Spring Boot + React)
 
 This project showcases a full-stack GraphQL application built on modern best practices.
 
