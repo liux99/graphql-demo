@@ -1,4 +1,4 @@
-scalar Json
+scalar JSONObject
 
 enum PropertyStatus {
   AVAILABLE
@@ -21,8 +21,8 @@ type Property {
   livingArea: Int
   lotSizeAcres: Float
   yearBuilt: Int
-  standardStatus: PropertyStatus!
-  features: Json!
+  status: PropertyStatus!
+  features: JSONObject
   amenities: [String!]
   createdAt: String
   updatedAt: String
@@ -58,7 +58,7 @@ input PropertyInput {
   yearBuilt: Int
   status: PropertyStatus = AVAILABLE
   amenities: [String!]
-  features: Json
+  features: JSONObject
 }
 
 input PropertyPatchInput {
@@ -74,7 +74,7 @@ input PropertyPatchInput {
   yearBuilt: Int
   status: PropertyStatus
   amenities: [String!]
-  features: Json
+  features: JSONObject
 }
 
 type Query {

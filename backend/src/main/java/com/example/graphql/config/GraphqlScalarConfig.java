@@ -6,18 +6,41 @@ import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.graphql.execution.RuntimeWiringConfigurer;
 
 import graphql.scalars.ExtendedScalars;
+import graphql.schema.GraphQLScalarType;
 import jakarta.annotation.PostConstruct;
 
 @Configuration
 public class GraphqlScalarConfig {
+//    @Bean
+//    public RuntimeWiringConfigurer runtimeWiringConfigurer() {
+//         return wiringBuilder -> {
+//                wiringBuilder.scalar(ExtendedScalars.Json);
+//                System.out.println(">>> [RuntimeWiringConfigurer] Json scalar registered");
+//            };
+//    }
+
     @Bean
-    public RuntimeWiringConfigurer runtimeWiringConfigurer() {
-         return wiringBuilder -> {
-                wiringBuilder.scalar(ExtendedScalars.Json);
-                System.out.println(">>> [RuntimeWiringConfigurer] Json scalar registered");
-            };
+    public GraphQLScalarType jsonObjectScalar() {
+        return ExtendedScalars.Json;
     }
 
+    @Bean
+    public RuntimeWiringConfigurer runtimeWiringConfigurer() {
+        return wiringBuilder -> {
+            wiringBuilder.scalar(
+                GraphQLScalarType.newScalar(ExtendedScalars.Json)
+                    .name("JSONObject")
+                    .description("A custom scalar for JSON objects")
+                    .build()
+            );
+            System.out.println(">>> [RuntimeWiringConfigurer] JSONObject scalar registered");
+        };
+    }
+    
+    
+    
+    
+    
     @PostConstruct
     public void initCheck() {
         System.out.println(">>> GraphqlScalarConfig bean HAS BEEN INITIALIZED.");
